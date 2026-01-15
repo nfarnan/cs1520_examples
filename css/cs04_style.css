@@ -1,0 +1,59 @@
+#red {
+	background-color: red;
+	height: 80vh;
+}
+
+#green {
+	background-color: green;
+}
+
+#blue {
+	background-color: blue;
+}
+
+@media (max-width: 500px) {
+	#container {
+		width: 90%;
+		margin: auto;
+	}
+
+	#red {
+		width: 100%;
+	}
+
+	#green {
+		width: 100%;
+		clear: both;
+		height: 40vh;
+	}
+
+	#blue {	
+		width: 100%;
+		clear: both;
+		height: 40vh;
+	}
+}
+
+@media (min-width: 501px) {
+	#container {
+		width: 80%;
+		margin: auto;
+	}
+
+	#red {
+		width: 60%;
+		float: left;
+	}
+
+	#green {
+		width: 20%;
+		float: left;
+		height: 80vh;
+	}
+
+	#blue {
+		width: 20%;
+		float: left;
+		height: 80vh;
+	}
+}
