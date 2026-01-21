@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Functions</title>
+<script type="text/javascript">
+	function pow(x, y) {
+		let ans = 1;
+		for (let i = 1; i <= y; i++) {
+			ans *= x;
+		}
+		// v This will generate an error v
+		//console.log(`After loop in pow: i == ${i}`);
+		return ans;
+	}
+
+  function pow2() {
+  		// Designed for # of actual parameters > # of formal parameters
+		var ans = 1;
+		for (var i = 1; i <= arguments[1]; i++) {
+			ans *= arguments[0];
+		}
+		//console.log(`After loop in pow2: i == ${i}`);
+		return ans;
+	}
+
+	function wacky(val) {
+		if (val == 1)
+			return "String Data";
+		else
+			return 1000;
+	}
+
+	function check_equal(v1, v2) {
+		console.log(`\n${v1} == ${v2} is:`);
+		if (v1 == v2) {
+			console.log("true!");
+		}
+		else {
+			console.log("false!");
+		}
+	}
+
+	function main() {
+		const base = parseInt(prompt("Enter a base", "2"));
+		const exp = parseInt(prompt("Enter an exponent", "1"));
+		let ans = pow(base, exp);
+		console.log(`(using pow): ${base} to the ${exp} = ${ans}`);
+
+		ans = pow2(base, exp);
+		console.log(`(using pow2): ${base} to the ${exp} = ${ans}`);
+		
+		console.log(`Same function, different return types: ${typeof(wacky(1))} ${typeof(wacky(2))}`);
+
+		check_equal("asdf", 0);
+		check_equal("", 0);
+		check_equal("asdf", true);
+		check_equal("true", true);
+		check_equal("1", true);
+		check_equal("", false);
+		
+		console.log("\n");
+
+		const x1 = "12345";
+		const x2 = 12345;
+
+		if (x1 == x2) {
+			console.log(`${x1} and ${x2} have the same value`);
+		}
+
+		if (x1 === x2) {
+			console.log(`${x1} and ${x2} have the same value and type`);
+		}
+
+		const num = parseInt(prompt("Enter a numerator", "1"));
+		const den = parseInt(prompt("Enter a denominator", "2"));
+
+		if ((den != 0) && (Math.abs(num/den) < 1)) {
+			console.log(`${num} / ${den} is a proper fraction`);
+		}
+		else if ((den != 0) && (Math.abs(num/den) >= 1)) {
+			console.log(`${num} / ${den} is an improper fraction`);
+		}
+		else
+			console.log(`${num} / ${den} is undefined`);
+
+		const test = 100/0;
+		console.log(`${test} is a ${typeof(test)}`);
+
+		const wackier = test + " and beyond";
+		console.log(`${wackier} is a ${typeof(wackier)}`);
+	}
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		main();
+	</script>
+	<h1>Check the JS console</h1>
+</body>
+</html>

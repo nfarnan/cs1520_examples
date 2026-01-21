@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>First Functional JavaScript Example</title>
+<script type="text/javascript">
+	function main() {
+		const data = [1, 2, 3, 4];
+		
+		for (let i = 0; i < data.length; i++) {
+			console.log("loopin! " + data[i]);
+		}
+
+		function alerter(arr) {
+			console.log("recursin! " + arr[0]);
+
+			const remaining = arr.slice(1);
+
+			if (remaining.length > 0) {
+				alerter(remaining);
+			}
+		}
+		alerter(data);
+	}
+
+	window.addEventListener("load", main);
+</script>
+</head>
+<body>
+	<h1>Check the JS Console</h1>
+</body>
+</html>

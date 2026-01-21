@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Regex exmaples</title>
+<script type="text/javascript">
+	function main() {
+		const s = "a man, a plan, a canal: panama";
+		console.log(`starting string: ${s}`);
+
+		const loc = s.search(/plan/);
+		console.log(`search finds /plan/ at ${loc}`);
+
+		let matches = s.match(/\w+/g);
+		console.log(`match(/\\w+/g) finds:  ${matches}`);
+
+		const re = new RegExp("\\w+", "g");
+		matches = s.match(re);
+		console.log(`match(new RegExp(\"\\\\w+\", \"g\")) finds:  ${matches}`);
+
+		const re2 = /\W+/;
+		matches2 = s.split(re2);
+		console.log(`words from split(/\\W+/): ${matches2}`);
+
+		const t = s.replace(/\W+/g, "-");
+		console.log(`s: ${s}`);
+		console.log(`t = s.replace(/\\W+/g, \"-\"): ${t}`);
+	}
+
+	window.addEventListener("load", main);
+</script>
+</head>
+<body>
+	<h1>Check the JS Console</h1>
+</body>
+</html>

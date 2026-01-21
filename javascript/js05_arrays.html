@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Arrays</title>
+<script type="text/javascript">
+	function printIt(a) {
+		console.log("The array contains:");
+		let arr_content = "";
+		for (var i = 0; i < a.length-1; i++)
+			 arr_content = arr_content + a[i] + ":";
+		arr_content = arr_content + a[a.length - 1];
+		console.log(arr_content);
+	}
+
+	function printItRec(a) {
+		console.log("The array contains:");
+		printRec(a);
+	}
+	
+	function printRec(a) {
+		// Print nested arrays recursively
+		for (var i = 0; i < a.length; i++) {
+			if (a[i] instanceof Array) {
+				console.log("[");
+				printRec(a[i]);
+				console.log("]");
+			}
+			else
+				console.log(a[i]);
+		}
+	}
+
+	function by_num(a, b) {
+		var ans = (a - b);
+		return ans;
+	}
+
+	function main() {
+		const a1 = new Array("here", "is", "an", "array", "of", "string", "data");
+		const a2 = new Array(25);
+		const a3 = new Array("10");
+		
+		// Will this error because a2 is declared `const`?
+		for (let i = 0; i < a2.length; i++)
+			a2[i] = (59 * i) % 200;
+		
+		printIt(a1);
+		printIt(a2);
+		printIt(a3);
+
+		console.log("\n");
+
+		a1.sort();
+		printIt(a1);
+		a2.sort();
+		printIt(a2);
+		a2.sort(by_num);
+		printIt(a2);
+
+		console.log("\n");
+		
+		a1.length = 10;
+		printIt(a1);
+		a1[12] = "end";
+		printIt(a1);
+		a1.length = 6;
+		printIt(a1);
+		a1.length = 10;
+		printIt(a1);
+		a1.length = 20;
+		printIt(a1);
+
+		console.log("\n");
+		
+		const s = a1.join();
+		console.log(s);
+
+		console.log("\n");
+		
+		// v This will generate an error v
+		//a3 = new Array(3);
+		const a4 = new Array(3);
+		for (i = 0; i < a4.length; i++)
+		{
+			 a4[i] = new Array(4);
+			 for (let j = 0; j < a4[i].length; j++)
+				  a4[i][j] = (i + 1) * j;
+		}
+		
+		console.log(typeof(a4));
+		printIt(a4);
+		printItRec(a4);
+		printIt(a4[0]);
+		printIt(a4[1]);
+		printIt(a4[2]);
+
+		// Really, the console does a very good job of logging arrays
+		console.log(a4);		
+
+		console.log("\n");
+		
+		const x = Array(1, 2, 3, 4);
+		const y = Array(1, 2, 3, 4);
+		const z = x;
+		printIt(x);
+		if (x == y) {
+			console.log("x == x");
+		}
+		if (x == z) {
+			console.log("x == z");
+		}
+		z[4] = 5;
+		printIt(x);
+	}
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		main();
+	</script>
+	<h1>Check the JS console</h1>
+</body>
+</html>

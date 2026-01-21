@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>More JS Regex Examples</title>
+<script type="text/javascript">
+	function matcher(s, p) {
+		console.log(`matching through string ${s} for pattern ${p}:`);
+		console.log(s.match(p));
+	}
+
+	function main() {
+		console.log("Group 1:");
+		matcher("snipe", /s*n[iI1]p[eE3]/);
+		matcher("sssnipe", /s*n[iI1]p[eE3]/);
+		matcher("ssssssssssssnIp3", /s*n[iI1]p[eE3]/);
+		matcher("sn1p3", /s*n[iI1]p[eE3]/);
+		matcher("n1p3", /s*n[iI1]p[eE3]/);
+		console.log("\n\n");
+
+		console.log("Group 2:");
+		matcher("qnipe", /s*n[iI1]p[eE3]/);
+		matcher("qnpe", /s*n[iI1]p[eE3]/);
+		console.log("\n\n");
+		
+		console.log("Group 3:");
+		matcher("aaaaaaa", /a*?/);
+		matcher("aaaaaaa", /a*/);
+		matcher("hello9999helloagain", /(\w+?)([0-9]+)(\w+)/);
+		matcher("hello9999helloagain", /(\w+)([0-9]+)(\w+)/);
+		console.log("\n\n");
+
+		console.log("Group 4:");
+		matcher("foofoo", /(.+)\1/);
+		matcher("foobar", /(.+)\1/);
+		matcher("barbaz", /(.+)\1/);
+		console.log("\n\n");
+
+		console.log("Group 5:");
+		matcher("aaaaaaa", /a+/g);
+		matcher("aaaaaaa", /a+?/g);
+		console.log("\n\n");
+
+		console.log("Group 6:");
+		matcher("3", /[0-9+-\/*]/);
+		matcher("+", /[0-9+-\/*]/);
+		matcher("-", /[0-9+-\/*]/);
+		matcher("*", /[0-9+-\/*]/);
+		matcher("/", /[0-9+-\/*]/);
+		matcher("\\", /[0-9+-\/*]/);
+		matcher(".", /[0-9+-\/*]/);
+		console.log("\n\n");
+	}
+
+	window.addEventListener("load", main);
+</script>
+</head>
+<body>
+	<h1>Check the JS Console</h1>
+</body>
+</html>

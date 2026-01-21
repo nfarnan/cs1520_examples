@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Another DOM Example</title>
+<script type="text/javascript">
+	// This example demonstrates some elements of DOM 0, DOM 1 and DOM 2
+
+	let clickCount = 0;
+
+	function clickTheBox() {
+		document.getElementById("theBox").click();
+		clickCount++;
+		document.getElementById("theButton").textContent = "Clicks: " + clickCount;
+	}
+
+	function boxClick() {
+		const val = document.getElementById("theText").value;
+		document.getElementById("theText").value = val + "Wacky";
+	}
+
+	function clickByName() {
+		const b = prompt("Id of button?");
+		document.getElementById(b).click();
+	}
+
+	// Note how we can dynamically create new html elements using Javascript
+	// If these elements themselves are dynamic (ex: buttons) we can create
+	// self-modifying web pages. Mondo cool!
+	function makeNewButton() {
+		const elt = document.createElement("input");
+		elt.setAttribute("type", "button");
+		input = prompt("Id of input?");
+		elt.setAttribute("id", input);
+		input = prompt("Value of input?");
+		elt.setAttribute("value", input);
+
+		// This is an example of the types of hoops web developers of days past
+		// would have had to jump through. Old versions of IE implemented alot
+		// of functionality under slightly different names, and it was up to
+		// the web programmer to explicitly support multiple platforms. All
+		// modern browswers should support `.addEventListener`.
+		if (elt.addEventListener) {
+			console.log("DOM 2 Compatible");
+			elt.addEventListener("click",clickTheBox, false); 
+		}
+		else if (elt.attachEvent) {
+			console.log("Old IE Being Used");
+			elt.attachEvent("onclick",clickTheBox);
+		}
+		// Once we have the new element created properly, we need to put it
+		// somewhere.  We can do this via the DOM 1 methods getElementById
+		// and appendChild.  The appendChild method actually updates the DOM
+		// tree dynamically.
+		const F = document.getElementById("theForm");
+		F.appendChild(elt);
+	}
+
+	// This is a DOM 0 way of changing the title of a web page
+	function changeTitle() {
+		const newTitle = prompt("New title?");
+		document.title = newTitle;
+	}
+
+	// This is using DOM 1
+	function changeTitle2() {
+		const newTitleValue = prompt("New title?");
+		const nodes = document.getElementsByTagName("title");
+		const oldNode = nodes[0].childNodes[0];
+		const newNode = document.createTextNode(newTitleValue);
+		nodes[0].replaceChild(newNode,oldNode);
+	}
+
+	function setup() {
+		// Attache event listeners
+		document.getElementById("theButton").addEventListener("click", clickTheBox);
+		document.getElementById("theBox").addEventListener("click", boxClick);
+		document.getElementById("clickButton").addEventListener("click", clickByName);
+		document.getElementById("chTitle").addEventListener("click", changeTitle2);
+		document.getElementById("makeButton").addEventListener("click", makeNewButton);
+	}
+
+	// Run setup after page had loaded
+	window.addEventListener("load", setup);
+</script>
+</head>
+<body>
+	<form id="theForm" onsubmit="return false">
+		<input type="button" id="theButton" value="Make it Wacky"/>
+		<input type="checkbox" id="theBox" />
+		<input type="text" id="theText" size="50" value="Bizzaro"/>
+		<br/>
+		<input type="button" id="clickButton" value="Select a Button"/>
+		<input type="button" id="chTitle" value="Change the Title"/>
+		<input type="button" id="makeButton" value="Make an element"/>
+	</form>
+</body>
+</html>

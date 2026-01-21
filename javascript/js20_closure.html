@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Closure Example</title>
+<script type="text/javascript">
+	function main() {
+		const ex = [];
+		
+		const funcMaker = (i) => {
+			return () => { console.log(i); };
+		};
+
+		for (var i = 0; i < 5; i++) {
+			ex[i] = funcMaker(i)
+		}
+
+		for (var j = 0; j < 5; j++) {
+			ex[j]();
+		}
+	}
+
+	window.addEventListener("load", main);
+</script>
+</head>
+<body>
+	<h1>Check the JS Console</h1>	
+</body>
+</html>

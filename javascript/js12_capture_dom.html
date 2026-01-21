@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Capture/Bubble Event Example</title>
+<script type = "text/javascript">
+	function hello1() {
+		console.log("Hello! 1");
+	}
+	
+	function hello2() {
+		console.log("Hello! 2");
+	}
+	
+	function setup() {
+		const theTable = document.getElementById("theTable");
+		const theBody = document.getElementById("theBody");
+		const theEntry = document.getElementById("theEntry");
+		
+		theTable.addEventListener("click", hello1, false);
+		theBody.addEventListener("click", hello2, true);
+		theEntry.addEventListener("click", () => { console.log("Hello! 3"); }, false);
+	}
+
+	// setup our app once the document is completely loaded in the window
+	window.addEventListener("load", setup);
+</script>
+</head>
+<body>
+	<table id="theTable">
+		<tbody id="theBody">
+			<tr>
+				<td>Shady Grove</td>
+				<td>Aeolian</td>
+			</tr>
+			<tr>
+				<td id="theEntry">Over the river, Charlie</td>
+				<td>Dorian</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

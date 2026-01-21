@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Objects</title>
+<script type="text/javascript">
+	function by_size(a, b) {
+		return a.size - b.size;
+	}
+
+	function TV(brand, size, injacks, outjacks) {
+		this.brand = brand;
+		this.size = size;
+		this.jacks = new Object();
+		this.jacks.input = injacks;
+		this.jacks.output = outjacks;
+		this.display = show_properties;
+	}
+
+	function show_properties() {
+		console.log("This is the TV:");
+		console.log(`Brand: ${this.brand}`);
+		console.log(`Size: ${this.size}`);
+		console.log("Input Jacks:");
+		console.log(`${this.jacks.input}`);
+		console.log("Output Jacks:");
+		console.log(`${this.jacks.output}`);
+		console.log("\n");
+	}
+
+	function main() {
+		var my_tv = new TV("Samsung", 46, 5, 2);
+		var your_tv = new TV("Sharp", 60, 8, 1);
+
+		// Note you can attach methods outside of constructor
+		your_tv.other_display = show_properties;
+
+		my_tv.display();
+		your_tv.display();
+		your_tv.other_display();
+
+		if (by_size(my_tv, your_tv) > 0)
+			console.log("My TV is bigger");
+		else
+			console.log("Your TV is bigger");
+			
+		console.log(`My TV is a(n) ${typeof(my_tv)}`);
+		if (my_tv instanceof TV) {
+			console.log("My TV is a TV");
+		}
+	}
+</script>
+</head>
+<body>
+	<script type="text/javascript">
+		main();
+	</script>
+	<h1>Check the JS console</h1>
+</body>
+</html>

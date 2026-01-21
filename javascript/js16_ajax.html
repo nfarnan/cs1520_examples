@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>Simple AJAX example</title>
+	<script type="text/javascript">
+		let xhr = new XMLHttpRequest();
+
+		function req_test() {
+			makeRequest("js16_text.txt");
+		}
+
+		function makeRequest(url) {
+			xhr = new XMLHttpRequest();
+
+			if (!xhr) {
+				console.log("Could not create an XMLHttpRequest instance");
+				return false;
+			}
+			
+			xhr.onreadystatechange = logResponse;
+			xhr.open("GET", url);
+			xhr.send();
+		}
+
+		function logResponse() {
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				if (xhr.status === 200) {
+					console.log("Request completed successfully:");
+					console.log(xhr.responseText);
+				} else {
+					console.log("There was a problem with the request.");
+				}
+			}
+		}
+
+		function setup() {
+			document.getElementById("ajaxButton").addEventListener("click", req_test);
+		}
+
+		window.addEventListener("load", setup);
+	</script>
+</head>
+<body>
+	<input type="button" id="ajaxButton" value="Make a request" />
+</body>
+</html>
