@@ -1,0 +1,9 @@
+[package]
+name = "rs02_vars_types"
+version = "0.1.0"
+authors = ["Nick Farnan <nlf4@pitt.edu>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

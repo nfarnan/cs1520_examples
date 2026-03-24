@@ -10,7 +10,7 @@
 
 	const z1 = x + y1;
 	const z2 = x + parseInt(y1);
-	const z3 = x * y1;
+	const z3 = y1 * x;
 	const z4 = x * y2;
 
 	// Expected result:  
@@ -20,7 +20,7 @@
 	console.log(`2: ${x} + ${y1} = ${z2}`);
 
 	// Expected result:  
-	console.log(`3: ${x} * ${y1} = ${z3}`);
+	console.log(`3: (flipped) ${y1} * ${x} = ${z3}`);
 
 
 	// Expected result:  
@@ -73,7 +73,7 @@
 	console.log(`16: q is ${q} and its type is ${typeof(q)}`);
 	var q = 8;
 
-	p = 5;
+	//p = 5;
 	// Expected result:  
 	console.log(`17: p is ${p} and its type is ${typeof(p)}`);
 	let p;
