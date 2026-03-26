@@ -1,7 +1,9 @@
 from flask import Flask, request
+from flask_cors import CORS
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:5173"])
 
 TODOS = {
     "todo1": {"task": "build an API", "done": True},
